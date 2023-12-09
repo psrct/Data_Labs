@@ -9,3 +9,5 @@ def station():
     print(text_num)
 
 station()
+
+print("".join([input() for _ in range(5)]))
