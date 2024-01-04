@@ -1,4 +1,4 @@
-'''Lab 02.03 Student Groups'''
+'''Lab 02.05 Parentheses Matching'''
 
 class ArrayStack:
     '''Class ArrayStack'''
@@ -47,26 +47,20 @@ class ArrayStack:
         '''print'''
         print(self.data)
 
-def main(group, students):
-    '''main'''
-    stack0 = ArrayStack()
-    lis = []
-    for _ in range(students):
-        stack0.push(input())
-    for _ in range(group):
-        lis.append(ArrayStack())
-    while True:
-        if stack0.is_empty() != True:
-            for i in range(group):
-                if stack0.is_empty() != True:
-                    poppy = stack0.pop()
-                    lis[i].push(poppy)
-                else:
-                    break
-        else:
-            break
-    for i in range(len(lis)):
-        print("Group "+ str(i+1) + ": ", end="")
-        print(*(lis[i].data), sep=", ")
-
-main(int(input()), int(input()))
+def is_parenthese_matching(expression):
+    '''is_parenthese_match'''
+    stackexpr = ArrayStack()
+    check = True
+    for i in expression:
+        if i == "(":
+            stackexpr.push(i)
+        if i == ")":
+            if stackexpr.pop() not in ["(", ")"]:
+                check = False
+    if stackexpr.size == 0 and check:
+        print("Parentheses in", expression, "are matched")
+        print(True)
+    else:
+        print("Parentheses in", expression, "are unmatched")
+        print(False)
+is_parenthese_matching(str(input()))

@@ -1,4 +1,4 @@
-'''Lab 02.01 Stack (Create Stack)'''
+'''Lab 02.02 Stack (Create Stack)'''
 
 class ArrayStack:
     '''Class ArrayStack'''
