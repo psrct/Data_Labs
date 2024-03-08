@@ -22,21 +22,20 @@ class Item:
 
     def get_cost(self):
         '''get Cost'''
-        return self.__price // self.__weight
+        return self.__price / self.__weight
 
 def knapsack(amount, itemlist):
     '''knapsack function'''
-    most, total, weightt = 0, 0, 0
-    newlist = itemlist.copy()
-    newlist.sort(key = lambda k : k.get_cost())
-    newlist.reverse()
-    for i in itemlist:
-        print(i.get_name(), i.get_cost())
-    print("________________")
-    for j in newlist:
-        print(j.get_name(), j.get_cost())
-    print("{} -> {} kg -> {} THB")
-    print("===============================")
+    weight, total = 0, 0
+    itemlist.sort(key=lambda k: k.get_cost(), reverse=True)
+    print("Knapsack Size: %.1f kg\n===============================" %amount)
+    for j in itemlist:
+        if amount == weight:
+            return
+        elif amount >= (weight + j.get_weight()):
+            print("{} -> {} kg -> {} THB".format(j.get_name(), j.get_weight(), j.get_price()))
+            weight += j.get_weight()
+            total += j.get_price()
     print("Total: %d THB" %total)
 
 def main():
